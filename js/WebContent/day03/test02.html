@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	var blackpink = [
+		['제니', 27, 'jennie@githrd.com'],
+		['리사', 26, 'lisa@githrd.com'],
+		['로제', 28, 'rose@githrd.com'],
+		['지수', 27, 'jisuo@githrd.com']
+	];
+	
+	// 문제 ] 이름을 입력 받아서 그 멤버의 정보를 출력하세요.
+	
+	
+	var name = prompt('멤버이름을 입력하세요');
+	
+	for(i = 0; i < blackpink.length; i++){
+		for(j = 0; j < blackpink[i].length; j++){
+			if(blackpink[i][j] == name){
+				//document.write(blackpink[i][j] + ', ');
+				document.write(blackpink[i]);
+			}else{
+				continue;
+			}
+		}
+		document.write('<br><br>');
+	}
+	
+	/*
+	new 명령 
+	1. 힙영역에 인스턴스를 만드는 명령
+	2. 만들어주는 인스턴스의 메모리 주소를 알려주는 명령
+	*/
+
+	
+	
+	
+	
+</script>
+</head>
+<body>
+
+</body>
+</html>

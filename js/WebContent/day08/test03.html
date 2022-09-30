@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>login page</title>
+<link type="text/css" rel="stylesheet" href="../css/w3.css">
+<link type="text/css" rel="stylesheet" href="../css/smart.css">
+<style type="text/css">
+	html, body{
+		height: 100%;
+	}
+</style>
+</head>
+<body>
+	<div class="w3-display-container" style="height: 100%;">
+	<!-- w3-display-container 를 사용할 때는 html, body와 해당 div의 높이가 설정 되야함. -->
+		<div class="w3-display-middle mxm700">
+			<h1 class="w3-padding w3-pink w3-center w3-card-4 w3-round-large mgb20">Smart Login</h1>
+		
+			<!-- 폼태그 -->
+			<form method="GET" action="result.html" name="frm" id="frm" class="w3-col w3-round-large w3-card-4 mgb20 pdh30">
+				<div class="w3-col mgb15">
+					<div class="w3-col m3 w3-right-align w3-text-gray pdr10 ft18">
+						<label for="id">I D : </label>
+					</div>
+					<div class="w3-col m9">
+						<input type="text" name="id" id="id" class="w3-col m10 w3-input w3-border" placeholder="메일 형식으로 입력하세요." required="required">
+					</div>
+				</div>
+				<div class="w3-col">
+					<div class="w3-col m3 w3-right-align w3-text-gray pdr10 ft18">
+						<label for="pw">P W : </label>
+					</div>
+					<div class="w3-col m9">
+						<input type="password" name="pw" id="pw" class="w3-col m10 w3-input w3-border" placeholder="비밀번호를 입력하세요." required="required">
+					</div>
+				</div>
+			</form>
+			
+			<!-- 버튼 태그 -->
+			<div class="w3-col w3-round-large w3-card-4 hidden">
+				<div class="w3-col w3-third w3-green w3-hover-lime w3-button" id="hbtn">home</div>
+				<div class="w3-col w3-third w3-orange w3-hover-khaki w3-button" id="jbtn">join</div>
+				<div class="w3-col w3-third w3-blue w3-hover-aqua w3-button" id="lbtn">login</div>
+			</div>
+		</div>
+	</div>
+<script type="text/javascript">
+	// 로그인 버튼 클릭 이벤트 처리
+	document.getElementById('lbtn').onclick = function() {
+		//1. 유효성 검사
+		//아이디 유효성검사
+		var sid = document.frm.id.value;
+		if(!sid){
+			// ==> sid가 비어있거나 아직 정의되어있지 않다
+			document.frm.id.focus();
+			// 더이상 내용을 실행 시키면 안되기 때문에 return으로 함수실행을 종료시킨다.
+			return;
+		}
+		if(sid.indexOf('@') == -1 ){
+			//메일형식이 아닌 경우
+			//입력데이터 삭제
+			document.frm.id.value = '';
+			document.frm.id.focus();
+			return;
+		}
+		//패스워드 유효성 검사
+		var spw = document.frm.pw.value;
+		if(!spw){
+			document.frm.pw.focus();
+			return;
+		}
+		
+		//2. 폼태그 전송
+		document.frm.submit();
+	};
+</script>
+</body>
+</html>

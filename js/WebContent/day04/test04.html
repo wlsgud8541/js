@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	// 1. 랜덤하게 1 ~ 20 사이의 정수 10개를 만들어서 배열에 추가
+	// 2. 그 배열을 오름차순 정렬
+	// 3. 내용 출력
+	
+	// 1. 배열 변수 만들기
+		var nums = [];
+	// 2. 랜덤한 숫자 10개 만들어서 배열 변수에 추가
+		for(i = 0; i < 10; i++){
+			var no = Math.floor(Math.random() * 20 +1);
+			nums[i] = no;
+		}
+	// 3. 정렬 - 치환정렬
+	// 여기서 하는 방법은 치환 방법을 사용해서 정렬
+		for(i = 0; i < nums.length-1; i++){  //원본 숫자, 꺼내는 위치값
+			for(j = i+1; j < nums.length; j++){ // 비교숫자
+				/*
+				var no1 = nums[i];
+				var no2 = nums[j];
+				if(no1 > no2){
+					nums[i] = no2;
+					nums[j] = no1;
+				}
+				*/
+				if(nums[i] > nums[j]){
+					var tmp = nums[i]; // nums[i]번째에 nums[j]번째 숫자를 바로 넣으면 nums[i]번째의 숫자가 소멸되기 때문에 임시로 변수에 저장
+					nums[i] = nums[j];
+					nums[j] = tmp;
+				}
+			}	
+		}
+	// 4. 출력
+		document.write('nums : '+ nums + '<br>')
+	
+	
+</script>
+</head>
+<body>
+
+</body>
+</html>

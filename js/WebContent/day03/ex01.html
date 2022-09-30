@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	/*
+		1. blackpink 라는 배열을 만들기
+		2. 위 배열에 멤버
+			제니, 리사, 로제, 지수 추가
+		3. 각 멤버들의 자바 성적을 기억배열을 만들어서
+			점수를 입력
+			[75, 80, 60, 100]
+		4. 각 멤버들의 db 성적을 기억할 배열을 만들어서
+			점수를 입력
+		5. 각 멤버별 점수정보를 출력.
+		
+		6. 배열하나로 관리. - 2차원배열
+		
+		참고]
+			자바스크립트에서 정수형태의 난수 발생하는 방법
+			Math.floor(Math.random() * 정수); ==> 발생하는 정수는 곱해주는 정수보다 -1된 값까지는 만들어준다.
+	*/
+
+	var blackpink = [];
+	var blackpinkJava = [];		
+	var blackpinkDB = [];		
+
+	
+		for (i = 0; i < 4; i++) {
+			if(i == '0'){
+				blackpink[i] = '제니';
+			}else if(i == '1'){
+				blackpink[i] = '리사';
+			}else if(i == '2'){
+				blackpink[i] = '로제';
+			}else if(i == '3'){
+				blackpink[i] = '지수';
+			}
+		}
+		
+		for (i = 0; i < 4; i++) {
+			blackpinkJava[i] = Math.floor(Math.random() * 101)
+		}
+		
+		for (i = 0; i < 4; i++) {
+			blackpinkDB[i] = Math.floor(Math.random() * 101)
+		}		
+		
+		for (var i = 0; i < blackpink.length; i++) {
+			document.write('학생이름 : '+blackpink[i]+' /  자바점수 : '+blackpinkJava[i]+' /  DB점수 : '+blackpinkDB[i]+'<br>');		
+		}	
+</script>
+</head>
+<body>
+
+</body>
+</html>

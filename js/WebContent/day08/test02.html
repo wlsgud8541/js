@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+
+<script type="text/javascript">
+	var str = '창문너머 어렴풋이 옛생각이 나겠지요...!';
+	
+	document.write('str 길이 : '+str.length + '<br>');
+	
+	var str2 = new String('jennie');
+	document.write('str2 : '+ str2 + '<br>');
+	
+	document.write('str2.indexOf("n") : ' + (str2.indexOf("n") == -1 ? '없음' : str2.indexOf("n")) + '<br>');
+	document.write('str2.indexOf("m") : ' + (str2.indexOf("m") == -1 ? '없음' : str2.indexOf("m")) + '<br>');
+	
+	var str3 = 'Hello BlackPink';
+	// ' ' 이전의 문자열을 추출하세요.
+	// ' ' 의 인덱스 찾기
+	var idx = str3.indexOf(' ');
+	var result = str3.substring(0, idx);
+	
+	document.write('공백문자 이전의 문자열 : ' + result + '###<br>');
+	
+	// ' ' a이후의 문자열들을 추출하세요
+	document.write('공백문자 이후의 문자열 : ' + str3.substring(idx + 1) + '<br>' );
+	
+	//대문자로 변환
+	document.write('"abcd".toUpperCase() : '+ 'abcd'.toUpperCase() + '<br>');
+
+	//소문자로 변환
+	document.write('"ABCD".toLowerCase() : '+ 'ABCD'.toLowerCase() + '<br>');
+	
+	//slice
+	//result = str3.slice(idx+1, str3.indexOf('P'));
+	document.write('slice test : '+ str3.slice(1, 2) + '<br>');
+	document.write('str3.slice(str3.indexOf("B"), str3.indexOf("P")) : '+ str3.slice(str3.indexOf('B'), str3.indexOf('P')) + '<br>');
+	
+	var str4 = 'Hello Black Pink !!!';
+	result = str4;
+	while(result.indexOf(' ') != -1){
+		result = result.replace(' ','');
+	}
+	//str4 = str4.replace(' ', '');
+	document.write('str4.replace(" ", "") : '+ result + '###<br>');	
+	
+	//substr	
+	result = str4.substr(str4.indexOf('B'),5);
+	document.write('str4.substr(str4.indexOf("B"),5) : '+ result + '###<br>');	
+	
+	var str5 = '     Hello Black Pink !!!';
+	result = str5.trim();
+	document.write('str5.trim() : ###'+ result + '###<br>');	
+	
+	var mail = 'jennie@githrd.com';
+	var arr = mail.split('@');
+	document.write('mail : '+ mail + '<br>');	
+	document.write('id / arr[0] : '+ arr[0] + '<br>');	
+	document.write('domain / arr[1] : '+ arr[1] + '<br>');	
+	
+	
+	
+</script>
+</head>
+<body>
+
+<script type="text/javascript">
+
+</script>
+</body>
+</html>

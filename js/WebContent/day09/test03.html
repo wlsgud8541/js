@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>login page</title>
+<link type="text/css" rel="stylesheet" href="../css/w3.css">
+<link type="text/css" rel="stylesheet" href="../css/smart.css">
+<style type="text/css">
+	html, body{
+		height: 100%;
+	}
+</style>
+</head>
+<body>
+	<div class="w3-display-container" style="height: 100%;">
+	<!-- w3-display-container 를 사용할 때는 html, body와 해당 div의 높이가 설정 되야함. -->
+		<div class="w3-display-middle mxm700">
+			<h1 class="w3-padding w3-pink w3-center w3-card-4 w3-round-large mgb20">Smart Login</h1>
+		
+			<!-- 폼태그 -->
+			<form method="GET" action="result.html" name="frm" id="frm" class="w3-col w3-round-large w3-card-4 mgb20 pdh30">
+				<div class="w3-col mgb15">
+					<div class="w3-col m3 w3-right-align w3-text-gray pdr10 ft18">
+						<label for="id">I D : </label>
+					</div>
+					<div class="w3-col m9">
+						<input type="text" name="id" id="id" class="w3-col m10 w3-input w3-border" placeholder="메일 형식으로 입력하세요." required="required">
+					</div>
+				</div>
+				<div class="w3-col">
+					<div class="w3-col m3 w3-right-align w3-text-gray pdr10 ft18">
+						<label for="pw">P W : </label>
+					</div>
+					<div class="w3-col m9">
+						<input type="password" name="pw" id="pw" class="w3-col m10 w3-input w3-border" placeholder="비밀번호를 입력하세요." required="required">
+					</div>
+				</div>
+			</form>
+			
+			<!-- 버튼 태그 -->
+			<div class="w3-col w3-round-large w3-card-4 hidden">
+				<div class="w3-col w3-third w3-green w3-hover-lime w3-button" id="hbtn">home</div>
+				<div class="w3-col w3-third w3-orange w3-hover-khaki w3-button" id="jbtn">join</div>
+				<div class="w3-col w3-third w3-blue w3-hover-aqua w3-button" id="lbtn">login</div>
+			</div>
+		</div>
+	</div>
+<script type="text/javascript">
+	// 로그인 버튼 클릭 이벤트 처리
+	document.getElementById('lbtn').onclick = function() {
+		//1. 유효성 검사
+		//아이디 유효성검사
+		var sid = document.frm.id.value;
+		if(!sid){
+			// ==> sid가 비어있거나 아직 정의되어있지 않다
+			document.frm.id.focus();
+			// 더이상 내용을 실행 시키면 안되기 때문에 return으로 함수실행을 종료시킨다.
+			return;
+		}
+		
+		// 아이디 정규 표현식 검사
+		// 1. 정규표현객체생성
+//		var pat1 = new RegExp('jennie'); 
+		//한글 패턴검사
+//		var pat1 = new RegExp('^[가-힣]{2,10}$');
+	
+		//이메일 형식 검사용 패턴을 입력
+		//1.  1번 패턴 : 이메일 형식은 아이디는 영문 5~10글자 
+		//1-2.2번 패턴 : 첫글자는 알파벳 두번째 이후문자는 알파벳과 숫자로 이루어진 5~10글자 
+		//2.  @도메인.com
+		//3.  도메인에서 com과 co.kr, go.kr, or.kr 도 처리
+		//4.  특수문자 표기 [~!@#%&*-_]  <<나열된 특수문자 중 한개
+		//    대괄호를 안쓰는 경우   \@  이나  \.  처럼 사용
+		//참고 ]
+		// 알파벳 3글자 이후 k가 와야하고 이후엔 숫자 2개 로 이루어진 패턴 ==> ''^[a-zA-Z]{3}[K][0-9]{2}$'
+		//var pattern = '^[a-zA-Z]+[a-zA-Z0-9]{5,10}[@][a-zA-Z]{2,8}[.]$';
+		
+		//1번 패턴
+		//var pattern = '^[a-zA-Z]{5,10}\@[a-z]{2,}\.(([a-z]{3})|([a-z]{2}\.[a-z]{2}))$';
+		
+		//2번 패턴
+		var pattern = '^[a-zA-Z][a-zA-Z0-9_#!*]{4,9}[@][a-z]{2,}[.](([a-z]{3})|([a-z]{2}[.][a-z]{2}))$';
+		var pat1 = new RegExp(pattern);
+		
+		// ^를 부정으로 쓸 경우 부정연산자를 써야하는 곳에 써주면 되고 [] (대괄호) 안쪽에 써주면 된다. 예) ^[^a-z]$
+		
+		// 2. 검사
+		var result1 = pat1.test(sid);
+		if(!result1){
+			document.frm.id.value='';
+			document.frm.id.focus();
+			return;
+		}
+		
+		//패스워드 유효성 검사
+		var spw = document.frm.pw.value;
+		if(!spw){
+			document.frm.pw.focus();
+			return;
+		}
+		//패스워드 정규표현식 검사
+//		var pwPat = /^12345$/;  // ^ : 문자 시작 부분 표시 , $문자 끝부분 표시
+		
+		//숫자 5글자로 이루어진 비밀번호 검사
+//		var pwPat = /^[0-9]{5}$/ // 0~9사이의 숫자 5개만 true
+//		var pwPat = /^[a-zA-Z]+[0-9]{5}$/ // 한글자 이상의 알파벳 한글자 와 0~9사이의 숫자  총 5글자가 true
+//		var pwPat = /^[가-힣]{3,10}$/;
+//		var pwPat = /^12345{3}$/;
+		var pwPat = /^12345$/;
+		//정규표현식 검사하고 처리
+		if (!pwPat.test(spw)) {
+			document.frm.pw.value='';
+			document.frm.pw.focus();
+			return;
+		}
+		
+		
+		//2. 폼태그 전송
+		document.frm.submit();
+	};
+</script>
+</body>
+</html>

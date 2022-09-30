@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Login Result</title>
+<link type="text/css" rel="stylesheet" href="../css/w3.css">
+<link type="text/css" rel="stylesheet" href="../css/smart.css">
+<script type="text/javascript">
+
+</script>
+</head>
+<body>
+	<div class="w3-content mxw600 w3-center">
+		<h1 class="w3-padding w3-blue w3-card-4 w3-margin-bottom">로그인 정보</h1>
+		<div class="w3-col w3-card-4">
+			<div class="w3-col">
+				<h3 class="w3-col m4 w3-right-align">eMail : </h3>
+				<h3 class="w3-col m8" id="eMail"></h3>
+			</div>
+			<div class="w3-col">
+				<h3 class="w3-col m4 w3-right-align">ID : </h3>
+				<h3 class="w3-col m8" id="id"></h3>
+			</div>
+			<div class="w3-col">
+				<h3 class="w3-col m4 w3-right-align">Domain : </h3>
+				<h3 class="w3-col m8" id="domain"></h3>
+			</div>
+			<div class="w3-col">
+				<h3 class="w3-col m4 w3-right-align">PW : </h3>
+				<h3 class="w3-col m8" id="pw"></h3>
+			</div>
+		</div>
+	</div>
+<script type="text/javascript">
+	var data = location.href;
+	data = location.search;
+	console.log("원본 데이터 : " + data);
+
+	data = decodeURIComponent(data).substring(1);
+	console.log("자른 데이터 : " + data);
+
+	var parr = data.split('&');
+	console.log("parr : " + parr);
+
+
+	var darr = {};
+	/*
+		parr = ['id=xxxxxx' , 'pw=xxxxxx'];
+		이 배열에서 데이터를하나씩 꺼내서 키값과 벨류를 나눌려고한다.
+		위 배열의 데이터를 하나씩 꺼내서 '='를 기준으로 배열로 만들면
+		==> 첫번째 방에는 키값이 (id | pw)
+			두번째 방에는 밸류들이 채워질 것이다.
+	*/
+	
+	for(i = 0 ; i < parr.length; i++){
+		//각 방에 들어가 있는 데이터는
+		// 키값 = 데이터
+		//의 형식으로 채워져 있으므로 잘라서 구분해주면 된다.
+		var tmp = parr[i].split('='); // '=' 기준으로 분리한 배열이 만들어진다.
+		/*
+			연관 배열에 데이터를 입력하는 방법
+			변수['키값'] = 데이터;
+		*/
+		darr[tmp[0]] = tmp[1]; // tmp[0] : 키값
+							   // tmp[1] : 벨류
+	}
+	
+	// 메일을 꺼내서 채워보자. 넘겨질때 키값이 id로 넘겨졌으므로 id라는 키값으로 꺼내면된다.
+	document.getElementById('eMail').innerHTML=darr['id'];
+	
+	//아이디 채우기 , @ 기준으로 나눈 배열
+	//var sepMail = darr['id'].split('@');
+	var sepMail =[ 
+					darr['id'].substring(0,darr['id'].indexOf('@')),
+					darr['id'].substring(darr['id'].indexOf('@')+1),
+				 ];
+	document.getElementById('id').innerHTML=sepMail[0];
+	
+	//도메인 채우기
+	document.getElementById('domain').innerHTML=sepMail[1];
+	
+	// 비번 채우기	
+	document.getElementById('pw').innerHTML=darr['pw'];
+
+	
+	/*
+	var eMail = data.split('&')[0].substring(data.split('&')[0].indexOf('=')+1);
+	eMail = decodeURIComponent(eMail);
+	var id = eMail.split('@')[0];
+	var domain = eMail.split('@')[1];
+	var pw = data.split('&')[1].substring(data.split('&')[1].indexOf('=')+1);
+		
+	document.getElementById('eMail').innerHTML=eMail;
+	document.getElementById('id').innerHTML=id;
+	document.getElementById('domain').innerHTML=domain;
+	document.getElementById('pw').innerHTML=pw;
+	*/
+</script>
+</body>
+</html>
